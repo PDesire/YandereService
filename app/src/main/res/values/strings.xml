@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meli Audio MKII</string>
+
+    <string name="audio_settings">Audio Settings</string>
+
+
+    <!-- DTS STRINGS -->
+
+    <string name="dts_description">Does make the Soundstage wider with newest DTS Surround Sound Technology, made by DTS Engineers and performed by PDesire</string>
+    <string name="dts_title">DTS Surround Sound</string>
+
+    <!-- HEAVYBASS STRINGS -->
+
+    <string name="heavybass_description">A SRS Re-callibration to output more bass from the Headphones</string>
+    <string name="heavybass_title">Heavybass Mode</string>
+
+    <!-- RAGE MODE STRINGS -->
+
+    <string name="ragemode_description">After Enabling and Rebooting your device, the Rage Mode re-callibrate the Meli Audio Engine to get 200% Engine power.</string>
+    <string name="ragemode_title">Meli Engine Rage Mode MKII</string>
+    <string name="ragemode_warning">The Rage Mode will break some EQs (unsure which gets broken) and the Battery Drain could be possibly higher than normal</string>
+
+
+    <!-- HEADER STRINGS -->
+
+    <string name="pref_header_credits">Other</string>
+
+
+	<!-- INFORMATION STRINGS -->
+
+    <string name="project_desire_scripting_description">0.7.1.1009.2016</string>
+    <string name="project_desire_scripting_title">Project Meli App Version</string>
+    <string name="project_desire_version_description">3.0</string>
+    <string name="project_desire_version_title">Project Meli Version</string>
+    <string name="main_author_description">Tristan Marsell (PDesire)</string>
+    <string name="main_author_title">Main Author</string>
+    <string name="special_author_title">Special Credits</string>
+    <string name="team_author_description">Team Project Desire</string>
+    <string name="team_author_title">Development Team</string>
+
+
+    <!-- MISC STRINGS -->
+    <string name="sound_enhance_strings_zirenesound_title_txt">AM3D Zirene® Audio</string>
+    <string name="sound_enhance_strings_zirenesound_desc_txt">Performs the best of AM3D in one app, enhancements in many ways for Speaker, Headphones and Bluetooth</string>
+    <string name="sound_enhance_strings_v4a_title_txt">VIPER4Android®</string>
+    <string name="sound_enhance_strings_v4a_desc_txt">Highest Customize Abillity on Audio u ever can get</string>
+    <string name="sound_enhance_strings_dolby_title_txt">Dolby Digital Plus</string>
+    <string name="sound_enhance_strings_dolby_desc_txt">The iconic Dolby Sound</string>
+    <string name="sound_enhance_strings_without_dsee">Effects if Add-On flashed</string>
+
+    <string name="credits_title">Credits:</string>
+    <string name="credits">App Teacher: Abo Hani \n \nInspiration: Kagamine Rin, Megpoid Gumi, Utsu-P, Megurine Luka, Hatsune Miku, Sony Corp. and Google Inc.\n \nMentor: Honaka Rie (jimRnor) \n \nAnd to: \n \nTeam Project Desire, Team Harmonics Symphonium, RXS Moonbreakers, TPD Developer Promotion Project Group and XTREMEMusic Big Family Group</string>
+</resources>

@@ -1,0 +1,110 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Project Desire Engines" />
+    <Preference
+        android:defaultValue="true"
+        android:key="1.0"
+        android:title="Project Desire 1.0" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="2.5.1"
+        android:title="Project Desire 2.5.1" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="3.0"
+        android:title="Project Desire 3.0" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="5.0"
+        android:title="Project Desire 5.0" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="20.0"
+        android:title="Project Desire 20.0" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="35.6.1"
+        android:title="Project Desire 35.6.1" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="Two"
+        android:title="Project Desire Two" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="Three"
+        android:title="Project Desire Three" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="Four"
+        android:title="Project Desire Four" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="Five"
+        android:title="Project Desire Five" />
+
+
+    <PreferenceCategory android:title="Project Yume Engines" />
+    <Preference
+        android:defaultValue="true"
+        android:key="Final"
+        android:title="Project Yume Final" />
+
+
+    <PreferenceCategory android:title="Project Jinhua Engines" />
+    <Preference
+        android:defaultValue="true"
+        android:key="Beta"
+        android:title="Project Jinhua Beta" />
+
+
+    <PreferenceCategory android:title="Misc Engines" />
+    <Preference
+        android:defaultValue="true"
+        android:key="Believeness"
+        android:title="Project Believeness" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="Fortune"
+        android:title="Project Fortune" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="Loveness"
+        android:title="Project Loveness" />
+
+
+    <PreferenceCategory android:title="Project Meli Engines" />
+    <Preference
+        android:defaultValue="true"
+        android:key="Meli_One"
+        android:title="Project Meli One" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="Meli_Five"
+        android:title="Project Meli Five" />
+
+
+    <PreferenceCategory android:title="Default Engines" />
+    <Preference
+        android:defaultValue="true"
+        android:key="Ten"
+        android:title="Project Meli Ten Engine" />
+
+    <Preference
+        android:defaultValue="true"
+        android:key="Ragemode"
+        android:title="Project Meli Ten Engine Rage Mode" />
+
+
+</PreferenceScreen>
