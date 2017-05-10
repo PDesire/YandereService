@@ -4,11 +4,11 @@
     <header
         android:fragment="com.meli.pdesire.projectmeliaudioeffects.AudioSettingsFragment"
         android:icon="@null"
-        android:title="@string/audio_settings" />
+        android:title="@string/pref_header_audio_settings" />
     <header
         android:fragment="com.meli.pdesire.projectmeliaudioeffects.EngineFragment"
         android:icon="@null"
-        android:title="Engines" />
+        android:title="@string/pref_header_engines" />
     <header
         android:fragment="com.meli.pdesire.projectmeliaudioeffects.CreditsFragment"
         android:icon="@null"

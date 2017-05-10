@@ -10,7 +10,7 @@ import android.preference.PreferenceFragment;
 /**
  * Created by PDesire on 31.01.2016.
  */
-public class CreditsFragment extends PreferenceFragment {
+public class PDesireAudioCreditsFragment extends PreferenceFragment {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 
@@ -19,7 +19,7 @@ public class CreditsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
 
 
-        addPreferencesFromResource(R.xml.pref_other);
+        addPreferencesFromResource(R.xml.pref_other_pdesireaudio);
         setHasOptionsMenu(true);
         Preference reboot = findPreference("credits_click");
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -27,7 +27,7 @@ public class CreditsFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 builder.setTitle (R.string.credits_title);
-                builder.setMessage (CreditsFragment.this.getString (R.string.credits));
+                builder.setMessage (PDesireAudioCreditsFragment.this.getString (R.string.credits_pdesireaudio));
                 builder.create ();
                 builder.show ();
                 return false;

@@ -2,10 +2,10 @@
 <resources>
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#6811cc</color>
-    <color name="colorAccent">#a040ff</color>
+    <color name="colorAccent">#c60003</color>
     <color name="backgroundColor">#ffffff</color>
     <color name="backgroundWhiteColor">#ffffff</color>
-    <color name="textBrighterColor">#ffffff</color>
+    <color name="textBrighterColor">#a83e1616</color>
     <color name="textDarkerColor">#5b5b5b</color>
     <color name="textColor">#000000</color>
     <color name="textDesireColor">#1d102d</color>

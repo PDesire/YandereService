@@ -1,0 +1,15 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+    android:defaultValue="true"
+    android:key="pdesireaudio_uhqa_switch"
+    android:summary="@string/pdesireaudio_uhqa_description"
+    android:title="@string/pdesireaudio_uhqa_title" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="pdesireaudio_static_switch"
+        android:summary="@string/pdesireaudio_static_description"
+        android:title="@string/pdesireaudio_static_title" />
+
+</PreferenceScreen>

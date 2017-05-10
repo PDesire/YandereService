@@ -26,45 +26,44 @@ import java.util.List;
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
  * API Guide</a> for more information on developing a Settings UI.
  */
-public class SettingsActivity extends PreferenceActivity {
+public class PDesireAudioActivity extends PreferenceActivity {
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-
+        
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder (this).addApi (AppIndex.API).build ();
     }
-
-
+    
+    
     /**
      * {@inheritDoc}
      */
     @Override
     @TargetApi (Build.VERSION_CODES.HONEYCOMB)
     public void onBuildHeaders(List<Header> target) {
-        loadHeadersFromResource (R.xml.pref_headers, target);
+        loadHeadersFromResource (R.xml.pref_headers_pdesireaudio, target);
     }
-
+    
     /**
      * This method stops fragment injection in malicious applications.
      * Make sure to deny any unknown fragments here.
      */
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName ().equals (fragmentName)
-                || AudioSettingsFragment.class.getName ().equals (fragmentName)
-                || EngineFragment.class.getName ().equals (fragmentName)
-                || CreditsFragment.class.getName ().equals (fragmentName);
+                || PDesireAudioControlFragment.class.getName ().equals (fragmentName)
+                || PDesireAudioCreditsFragment.class.getName ().equals (fragmentName);
     }
-
+    
     @Override
     public void onStart() {
         super.onStart ();// ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -74,7 +73,7 @@ public class SettingsActivity extends PreferenceActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.start (client, getIndexApiAction ());
     }
-
+    
     @Override
     public void onStop() {
         super.onStop ();// ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -84,7 +83,7 @@ public class SettingsActivity extends PreferenceActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.disconnect ();
     }
-
+    
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.

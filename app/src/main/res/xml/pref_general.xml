@@ -1,15 +1,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- IMPLEMENTATION OF 3RD PARTY apps, PLEASE DON'T REMOVE THIS -->
-    <PreferenceCategory android:title="@string/sound_enhance_strings_without_dsee" />
-    <PreferenceScreen android:title="@string/sound_enhance_strings_zirenesound_title_txt" android:summary="@string/sound_enhance_strings_zirenesound_desc_txt">
+    <PreferenceScreen android:title="@string/sound_enhance_strings_zirenesound_title_txt" android:summary="@string/sound_enhance_strings_zirenesound_desc_txt" android:key="am3d">
         <intent android:targetPackage="com.fihtdc.am3dfx" android:action="android.intent.action.MAIN" android:targetClass="com.fihtdc.am3dfx.AM3DAudioControlPanelActivity" />
     </PreferenceScreen>
 
-    <PreferenceScreen android:title="@string/sound_enhance_strings_v4a_title_txt" android:summary="@string/sound_enhance_strings_v4a_desc_txt">
+    <PreferenceScreen android:title="@string/sound_enhance_strings_v4a_title_txt" android:summary="@string/sound_enhance_strings_v4a_desc_txt" android:key="v4a">
         <intent android:targetPackage="com.audlabs.viperfx" android:action="android.intent.action.MAIN" android:targetClass="com.audlabs.viperfx.main.MainActivity" />
     </PreferenceScreen>
 
-    <PreferenceScreen android:title="@string/sound_enhance_strings_dolby_title_txt" android:summary="@string/sound_enhance_strings_dolby_desc_txt">
+    <PreferenceScreen android:title="@string/sound_enhance_strings_dolby_title_txt" android:summary="@string/sound_enhance_strings_dolby_desc_txt" android:key="dolby">
         <intent android:targetPackage="com.dolby.ds1appUI" android:action="android.intent.action.MAIN" android:targetClass="com.dolby.ds1appUI.MainActivity" />
     </PreferenceScreen>
     <!-- END OF IMPLEMENTATION -->
@@ -20,13 +19,6 @@
         android:key="heavybass_switch"
         android:summary="@string/heavybass_description"
         android:title="@string/heavybass_title" />
-
-    <PreferenceCategory android:title="DTS Surround" />
-    <SwitchPreference
-        android:defaultValue="true"
-        android:key="dts_switch"
-        android:summary="@string/dts_description"
-        android:title="@string/dts_title" />
 
 
     <PreferenceCategory android:title="" />
