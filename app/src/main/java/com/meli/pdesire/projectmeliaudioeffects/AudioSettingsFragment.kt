@@ -13,8 +13,6 @@ import android.preference.PreferenceFragment
 import android.preference.PreferenceScreen
 import android.preference.SwitchPreference
 
-import java.io.IOException
-
 class AudioSettingsFragment : PreferenceFragment() {
 
     private fun isAppInstalled(uri: String): Boolean {
@@ -64,20 +62,10 @@ class AudioSettingsFragment : PreferenceFragment() {
             val switched = (preference as SwitchPreference)
                     .isChecked
             if (!switched)
-                try {
-                    val command = "su -c sh /system/Desire/Shells/Heavybass_Enable.sh"
-                    val p = Runtime.getRuntime().exec(command)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            else
-                try {
-                    val command = "su -c sh /system/Desire/Shells/Heavybass_Disable.sh"
-                    val p = Runtime.getRuntime().exec(command)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
+                RootUtility.sudo("sh /system/Desire/Shells/Heavybass_Enable.sh")
 
+            else
+                RootUtility.sudo("sh /system/Desire/Shells/Heavybass_Disable.sh")
             true
         }
 
@@ -85,12 +73,7 @@ class AudioSettingsFragment : PreferenceFragment() {
         val reboot = findPreference("reboot_click")
 
         reboot.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            try {
-                val command = "su -c reboot"
-                val p = Runtime.getRuntime().exec(command)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            RootUtility.sudo("su -c reboot")
 
             false
         }

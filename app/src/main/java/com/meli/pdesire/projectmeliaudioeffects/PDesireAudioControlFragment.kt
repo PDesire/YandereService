@@ -10,8 +10,8 @@ import android.os.Bundle
 import android.preference.Preference
 import android.preference.PreferenceFragment
 import android.preference.SwitchPreference
-
-import java.io.IOException
+import android.widget.Toast
+import java.io.File
 
 class PDesireAudioControlFragment : PreferenceFragment() {
 
@@ -23,6 +23,12 @@ class PDesireAudioControlFragment : PreferenceFragment() {
         addPreferencesFromResource(R.xml.pref_pdesireaudio_control)
         setHasOptionsMenu(true)
 
+        val pdesireaudio_wcd9330 = File("/sys/module/snd_soc_wcd9330/uhqa_mode_pdesireaudio")
+
+        if (!pdesireaudio_wcd9330.exists()) {
+            Toast.makeText(getActivity(), "PDesireAudio not found on Kernel",
+                    Toast.LENGTH_LONG).show();
+        }
 
         val pdesireaudio_uhqa = findPreference("pdesireaudio_uhqa_switch")
 
@@ -30,19 +36,9 @@ class PDesireAudioControlFragment : PreferenceFragment() {
             val switched = (preference as SwitchPreference)
                     .isChecked
             if (!switched)
-                try {
-                    val command = "su -c echo 1 /sys/module/snd_soc_wcd93*/uhqa_mode_pdesireaudio"
-                    val p = Runtime.getRuntime().exec(command)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
+                RootUtility.sudo("su -c echo 1 /sys/module/snd_soc_wcd9330/uhqa_mode_pdesireaudio")
             else
-                try {
-                    val command = "su -c echo 0 /sys/module/snd_soc_wcd93*/uhqa_mode_pdesireaudio"
-                    val p = Runtime.getRuntime().exec(command)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
+                RootUtility.sudo("su -c echo 0 /sys/module/snd_soc_wcd9330/uhqa_mode_pdesireaudio")
 
             true
         }
@@ -54,19 +50,9 @@ class PDesireAudioControlFragment : PreferenceFragment() {
             val switched = (preference as SwitchPreference)
                     .isChecked
             if (!switched)
-                try {
-                    val command = "su -c echo 1 /sys/module/snd_soc_wcd93*/pdesireaudio_static_mode"
-                    val p = Runtime.getRuntime().exec(command)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
+                RootUtility.sudo("su -c echo 1 /sys/module/snd_soc_wcd93*/pdesireaudio_static_mode")
             else
-                try {
-                    val command = "su -c echo 0 /sys/module/snd_soc_wcd93*/pdesireaudio_static_mode"
-                    val p = Runtime.getRuntime().exec(command)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
+                RootUtility.sudo("su -c echo 0 /sys/module/snd_soc_wcd93*/pdesireaudio_static_mode")
 
             true
         }

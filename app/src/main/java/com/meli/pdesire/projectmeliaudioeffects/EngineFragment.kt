@@ -24,23 +24,13 @@ class EngineFragment : PreferenceFragment() {
 
 
         yume.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            try {
-                val command = "su -c sh /system/Desire/Shells/Engines/Yume/Final/Final.sh"
-                val p = Runtime.getRuntime().exec(command)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            RootUtility.sudo("su -c sh /system/Desire/Shells/Engines/Yume/Final/Final.sh")
 
             false
         }
 
         meli.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            try {
-                val command = "su -c sh /system/Desire/Shells/Rage_Enable.sh"
-                val p = Runtime.getRuntime().exec(command)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            RootUtility.sudo("su -c sh /system/Desire/Shells/Rage_Enable.sh")
 
             false
         }

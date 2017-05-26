@@ -16,6 +16,9 @@ import com.google.android.gms.appindexing.Action
 import com.google.android.gms.appindexing.AppIndex
 import com.google.android.gms.appindexing.Thing
 import com.google.android.gms.common.api.GoogleApiClient
+import android.content.pm.ApplicationInfo
+
+
 
 /**
  * A [PreferenceActivity] that presents a set of application settings. On
@@ -35,6 +38,37 @@ class SettingsActivity : PreferenceActivity() {
      */
     private var client: GoogleApiClient? = null
 
+    private fun checkLuckyPatcher(): Boolean {
+        if (packageExists("com.dimonvideo.luckypatcher")) {
+            return true
+        }
+
+        if (packageExists("com.chelpus.lackypatch")) {
+            return true
+        }
+
+        if (packageExists("com.android.vending.billing.InAppBillingService.LACK")) {
+            return true
+        }
+
+        return false
+    }
+
+    private fun packageExists(packageName: String): Boolean {
+        try {
+            val info = this.packageManager.getApplicationInfo(packageName, 0) ?: // No need really to test for null, if the package does not
+                    // exist it will really rise an exception. but in case Google
+                    // changes the API in the future lets be safe and test it
+                    return false
+
+            return true
+        } catch (ex: Exception) {
+            // If we get here only means the Package does not exist
+        }
+
+        return false
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -43,6 +77,9 @@ class SettingsActivity : PreferenceActivity() {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = GoogleApiClient.Builder(this).addApi(AppIndex.API).build()
+        if (checkLuckyPatcher()) {
+
+        }
     }
 
 
