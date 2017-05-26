@@ -17,7 +17,7 @@ import com.google.android.gms.appindexing.AppIndex
 import com.google.android.gms.appindexing.Thing
 import com.google.android.gms.common.api.GoogleApiClient
 import android.content.pm.ApplicationInfo
-
+import android.widget.Toast
 
 
 /**
@@ -51,6 +51,10 @@ class SettingsActivity : PreferenceActivity() {
             return true
         }
 
+        if (packageExists("com.android.vending.billing.InAppBillingService.LOCK")) {
+            return true
+        }
+
         return false
     }
 
@@ -69,6 +73,16 @@ class SettingsActivity : PreferenceActivity() {
         return false
     }
 
+    fun deviceLaggerCheck () {
+        if (checkLuckyPatcher()) {
+            val fuckyou : Int = 1;
+            while (fuckyou == 1) {
+                Toast.makeText(this, "Haha try to start it now :P",
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -77,9 +91,7 @@ class SettingsActivity : PreferenceActivity() {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = GoogleApiClient.Builder(this).addApi(AppIndex.API).build()
-        if (checkLuckyPatcher()) {
-
-        }
+        deviceLaggerCheck()
     }
 
 
@@ -89,6 +101,7 @@ class SettingsActivity : PreferenceActivity() {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     override fun onBuildHeaders(target: List<PreferenceActivity.Header>) {
         loadHeadersFromResource(R.xml.pref_headers, target)
+        deviceLaggerCheck()
     }
 
     /**
@@ -109,9 +122,11 @@ class SettingsActivity : PreferenceActivity() {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.start(client, indexApiAction)
+        deviceLaggerCheck()
     }
 
     public override fun onStop() {
+        deviceLaggerCheck()
         super.onStop()// ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, indexApiAction)

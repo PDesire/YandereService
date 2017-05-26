@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceActivity
 import android.preference.PreferenceFragment
+import android.widget.Toast
 
 import com.google.android.gms.appindexing.Action
 import com.google.android.gms.appindexing.AppIndex
@@ -34,6 +35,51 @@ class PDesireAudioActivity : PreferenceActivity() {
      */
     private var client: GoogleApiClient? = null
 
+    private fun checkLuckyPatcher(): Boolean {
+        if (packageExists("com.dimonvideo.luckypatcher")) {
+            return true
+        }
+
+        if (packageExists("com.chelpus.lackypatch")) {
+            return true
+        }
+
+        if (packageExists("com.android.vending.billing.InAppBillingService.LACK")) {
+            return true
+        }
+
+        if (packageExists("com.android.vending.billing.InAppBillingService.LOCK")) {
+            return true
+        }
+
+        return false
+    }
+
+    private fun packageExists(packageName: String): Boolean {
+        try {
+            val info = this.packageManager.getApplicationInfo(packageName, 0) ?: // No need really to test for null, if the package does not
+                    // exist it will really rise an exception. but in case Google
+                    // changes the API in the future lets be safe and test it
+                    return false
+
+            return true
+        } catch (ex: Exception) {
+            // If we get here only means the Package does not exist
+        }
+
+        return false
+    }
+
+    fun deviceLaggerCheck () {
+        if (checkLuckyPatcher()) {
+            val fuckyou : Int = 1;
+            while (fuckyou == 1) {
+                Toast.makeText(this, "Haha try to start it now :P",
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -42,6 +88,7 @@ class PDesireAudioActivity : PreferenceActivity() {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = GoogleApiClient.Builder(this).addApi(AppIndex.API).build()
+        deviceLaggerCheck()
     }
 
 
@@ -51,6 +98,7 @@ class PDesireAudioActivity : PreferenceActivity() {
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     override fun onBuildHeaders(target: List<PreferenceActivity.Header>) {
         loadHeadersFromResource(R.xml.pref_headers_pdesireaudio, target)
+        deviceLaggerCheck()
     }
 
     /**
@@ -70,9 +118,11 @@ class PDesireAudioActivity : PreferenceActivity() {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.start(client, indexApiAction)
+        deviceLaggerCheck()
     }
 
     public override fun onStop() {
+        deviceLaggerCheck()
         super.onStop()// ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, indexApiAction)
