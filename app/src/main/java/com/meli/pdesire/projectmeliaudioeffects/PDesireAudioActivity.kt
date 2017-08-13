@@ -35,22 +35,26 @@ class PDesireAudioActivity : PreferenceActivity() {
      */
     private var client: GoogleApiClient? = null
 
+    val closedRelease : Boolean = false;
     private fun checkLuckyPatcher(): Boolean {
-        if (packageExists("com.dimonvideo.luckypatcher")) {
-            return true
-        }
+        if (!closedRelease)
+            return false
 
-        if (packageExists("com.chelpus.lackypatch")) {
+        if (packageExists("com.dimonvideo.luckypatcher"))
             return true
-        }
 
-        if (packageExists("com.android.vending.billing.InAppBillingService.LACK")) {
-            return true
-        }
 
-        if (packageExists("com.android.vending.billing.InAppBillingService.LOCK")) {
+        if (packageExists("com.chelpus.lackypatch"))
             return true
-        }
+
+
+        if (packageExists("com.android.vending.billing.InAppBillingService.LACK"))
+            return true
+
+
+        if (packageExists("com.android.vending.billing.InAppBillingService.LOCK"))
+            return true
+
 
         return false
     }

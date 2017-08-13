@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.1'
     defaultConfig {
         applicationId "com.meli.pdesire.projectmeliaudioeffects"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "2.0"
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
@@ -22,9 +22,9 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.google.firebase:firebase-appindexing:10.2.1'
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    compile 'com.android.support:support-v13:26.0.1'
+    compile 'com.google.firebase:firebase-appindexing:11.0.4'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
