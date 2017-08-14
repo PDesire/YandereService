@@ -95,11 +95,15 @@ class PDesireAudioActivity : PreferenceActivity() {
         client = GoogleApiClient.Builder(this).addApi(AppIndex.API).build()
         deviceLaggerCheck()
 
-        val pdesireaudio = AlertDialog.Builder(this)
-        pdesireaudio.setTitle("What is PDesireAudio")
-        pdesireaudio.setMessage("PDesireAudio is a kernel modification for high end audio \n \n Ask your kernel developer if he can implement PDesireAudio to his kernel if it doesn't have it yet \n \n Made By PDesire")
-        pdesireaudio.create()
-        pdesireaudio.show()
+        var alreadyShown : Boolean = false;
+        if (!alreadyShown) {
+            val pdesireaudio = AlertDialog.Builder(this)
+            pdesireaudio.setTitle("What is PDesireAudio")
+            pdesireaudio.setMessage("PDesireAudio is a kernel modification for high end audio \n \n Ask your kernel developer if he can implement PDesireAudio to his kernel if it doesn't have it yet \n \n Made By PDesire")
+            pdesireaudio.create()
+            pdesireaudio.show()
+            alreadyShown = true;
+        }
     }
 
 
