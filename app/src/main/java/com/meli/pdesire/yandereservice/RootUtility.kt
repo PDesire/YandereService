@@ -1,4 +1,4 @@
-package com.meli.pdesire.projectmeliaudioeffects
+package com.meli.pdesire.yandereservice
 
 import java.io.DataOutputStream
 import java.io.IOException

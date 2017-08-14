@@ -1,9 +1,8 @@
-package com.meli.pdesire.projectmeliaudioeffects
+package com.meli.pdesire.yandereservice
 
 /**
  * Created by PDesire on 20.05.2017.
  */
-
 
 import android.annotation.TargetApi
 import android.net.Uri
@@ -11,14 +10,12 @@ import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceActivity
 import android.preference.PreferenceFragment
+import android.widget.Toast
 
 import com.google.android.gms.appindexing.Action
 import com.google.android.gms.appindexing.AppIndex
 import com.google.android.gms.appindexing.Thing
 import com.google.android.gms.common.api.GoogleApiClient
-import android.content.pm.ApplicationInfo
-import android.widget.Toast
-
 
 /**
  * A [PreferenceActivity] that presents a set of application settings. On
@@ -31,7 +28,7 @@ import android.widget.Toast
    * Android Design: Settings](http://developer.android.com/design/patterns/settings.html) for design guidelines and the [Settings
    * API Guide](http://developer.android.com/guide/topics/ui/settings.html) for more information on developing a Settings UI.
  */
-class SettingsActivity : PreferenceActivity() {
+class PDesireAudioActivity : PreferenceActivity() {
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -104,7 +101,7 @@ class SettingsActivity : PreferenceActivity() {
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     override fun onBuildHeaders(target: List<PreferenceActivity.Header>) {
-        loadHeadersFromResource(R.xml.pref_headers, target)
+        loadHeadersFromResource(R.xml.pref_headers_pdesireaudio, target)
         deviceLaggerCheck()
     }
 
@@ -114,9 +111,8 @@ class SettingsActivity : PreferenceActivity() {
      */
     override fun isValidFragment(fragmentName: String): Boolean {
         return PreferenceFragment::class.java.name == fragmentName
-                || AudioSettingsFragment::class.java.name == fragmentName
-                || EngineFragment::class.java.name == fragmentName
-                || CreditsFragment::class.java.name == fragmentName
+                || PDesireAudioControlFragment::class.java.name == fragmentName
+                || PDesireAudioCreditsFragment::class.java.name == fragmentName
     }
 
     public override fun onStart() {

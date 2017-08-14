@@ -1,4 +1,4 @@
-package com.meli.pdesire.projectmeliaudioeffects;
+package com.meli.pdesire.yandereservice;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -2,11 +2,11 @@
 
     <!-- These settings headers are only used on tablets. -->
     <header
-        android:fragment="com.meli.pdesire.projectmeliaudioeffects.PDesireAudioControlFragment"
+        android:fragment="com.meli.pdesire.yandereservice.PDesireAudioControlFragment"
         android:icon="@null"
         android:title="@string/pref_header_pdesireaudio_controls" />
     <header
-        android:fragment="com.meli.pdesire.projectmeliaudioeffects.PDesireAudioCreditsFragment"
+        android:fragment="com.meli.pdesire.yandereservice.PDesireAudioCreditsFragment"
         android:icon="@null"
         android:title="@string/pref_header_pdesireaudio_credits" />
 
