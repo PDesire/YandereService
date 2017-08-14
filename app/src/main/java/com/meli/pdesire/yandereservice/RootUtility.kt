@@ -9,7 +9,40 @@ import java.io.IOException
 
 object RootUtility {
 
-     fun sudo(strings: String) {
+    var rootfsIsRW : Boolean = false;
+    var systemIsRW : Boolean = false;
+
+    fun mount_rw_rootfs() {
+        sudo("mount -o remount,rw /");
+        sudo("mount -o remount,rw rootfs");
+        rootfsIsRW = true;
+    }
+
+    fun mount_ro_rootfs() {
+        sudo("mount -o remount,ro /");
+        sudo("mount -o remount,ro rootfs");
+        rootfsIsRW = false;
+    }
+
+    fun mount_rw_system() {
+        sudo("mount -o remount,rw /system");
+        systemIsRW = true;
+    }
+
+    fun mount_ro_system() {
+        sudo("mount -o remount,ro /system");
+        systemIsRW = false;
+    }
+
+    fun security_harden() {
+        if (systemIsRW)
+            mount_ro_system()
+
+        if (rootfsIsRW == true)
+            mount_ro_rootfs()
+    }
+
+    fun sudo(strings: String) {
         try {
             val su = Runtime.getRuntime().exec("su")
             val outputStream = DataOutputStream(su.outputStream)

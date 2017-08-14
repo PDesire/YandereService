@@ -5,6 +5,7 @@ package com.meli.pdesire.yandereservice
  */
 
 import android.annotation.TargetApi
+import android.app.AlertDialog
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -93,6 +94,12 @@ class PDesireAudioActivity : PreferenceActivity() {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = GoogleApiClient.Builder(this).addApi(AppIndex.API).build()
         deviceLaggerCheck()
+
+        val pdesireaudio = AlertDialog.Builder(this)
+        pdesireaudio.setTitle("What is PDesireAudio")
+        pdesireaudio.setMessage("PDesireAudio is a kernel modification for high end audio \n \n Ask your kernel developer if he can implement PDesireAudio to his kernel if it doesn't have it yet \n \n Made By PDesire")
+        pdesireaudio.create()
+        pdesireaudio.show()
     }
 
 

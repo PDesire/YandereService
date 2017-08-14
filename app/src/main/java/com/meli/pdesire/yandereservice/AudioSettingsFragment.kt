@@ -36,21 +36,10 @@ class AudioSettingsFragment : PreferenceFragment() {
         addPreferencesFromResource(R.xml.pref_general)
         setHasOptionsMenu(true)
 
-        val isAM3DInstalled = isAppInstalled("com.fihtdc.am3dfx")
-        val isDolbyInstalled = isAppInstalled("com.dolby.ds1appUI")
         val isV4AInstalled = isAppInstalled("com.audlabs.viperfx")
 
         val screen = preferenceScreen
-        val am3d = findPreference("am3d") as PreferenceScreen
-        val dolby = findPreference("dolby") as PreferenceScreen
         val v4a = findPreference("v4a") as PreferenceScreen
-        if (!isAM3DInstalled) {
-            screen.removePreference(am3d)
-        }
-
-        if (!isDolbyInstalled) {
-            screen.removePreference(dolby)
-        }
 
         if (!isV4AInstalled) {
             screen.removePreference(v4a)
@@ -58,14 +47,25 @@ class AudioSettingsFragment : PreferenceFragment() {
 
         val heavybass = findPreference("heavybass_switch")
 
-        heavybass.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
+        heavybass.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, _ ->
             val switched = (preference as SwitchPreference)
                     .isChecked
-            if (!switched)
-                RootUtility.sudo("sh /system/Desire/Shells/Heavybass_Enable.sh")
+            if (!switched) {
+                RootUtility.mount_rw_rootfs()
+                RootUtility.mount_rw_system()
+                RootUtility.sudo("cp /system/Yuno/stock/srs_processing.cfg /system/etc/srs")
+                RootUtility.mount_ro_rootfs()
+                RootUtility.mount_ro_system()
+                RootUtility.security_harden()
 
-            else
-                RootUtility.sudo("sh /system/Desire/Shells/Heavybass_Disable.sh")
+            } else {
+                RootUtility.mount_rw_rootfs()
+                RootUtility.mount_rw_system()
+                RootUtility.sudo("cp /system/Yuno/heavybass/srs_processing.cfg /system/etc/srs")
+                RootUtility.mount_ro_rootfs()
+                RootUtility.mount_ro_system()
+                RootUtility.security_harden()
+            }
             true
         }
 
@@ -73,7 +73,7 @@ class AudioSettingsFragment : PreferenceFragment() {
         val reboot = findPreference("reboot_click")
 
         reboot.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            RootUtility.sudo("su -c reboot")
+            RootUtility.sudo("reboot")
 
             false
         }

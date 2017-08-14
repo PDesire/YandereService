@@ -24,15 +24,29 @@ class EngineFragment : PreferenceFragment() {
 
 
         yume.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            RootUtility.sudo("su -c sh /system/Desire/Shells/Engines/Yume/Final/Final.sh")
+            RootUtility.mount_rw_rootfs()
+            RootUtility.mount_rw_system()
+            RootUtility.sudo("cp /system/Yuno/Engines/Yume/Final/etc/audio_effects.conf /system/etc")
+            RootUtility.sudo("cp /system/Yuno/Engines/Yume/Final/vendor/audio_effects.conf /system/etc")
+            RootUtility.mount_ro_rootfs()
+            RootUtility.mount_ro_system()
+            RootUtility.security_harden()
 
             false
         }
 
         meli.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            RootUtility.sudo("su -c sh /system/Desire/Shells/Rage_Enable.sh")
+            RootUtility.mount_rw_rootfs()
+            RootUtility.mount_rw_system()
+            RootUtility.sudo("cp /system/Yuno/Engines/Meli/etc/audio_effects.conf /system/etc")
+            RootUtility.sudo("cp /system/Yuno/Engines/Meli/vendor/audio_effects.conf /system/etc")
+            RootUtility.mount_ro_rootfs()
+            RootUtility.mount_ro_system()
+            RootUtility.security_harden()
 
             false
         }
+
+        RootUtility.security_harden()
     }
 }
