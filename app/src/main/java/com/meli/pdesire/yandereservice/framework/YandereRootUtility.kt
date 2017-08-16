@@ -1,4 +1,4 @@
-package com.meli.pdesire.yandereservice
+package com.meli.pdesire.yandereservice.framework
 
 import java.io.DataOutputStream
 import java.io.IOException
@@ -7,7 +7,7 @@ import java.io.IOException
  * Created by PDesire on 26.05.2017.
  */
 
-object RootUtility {
+object YandereRootUtility {
 
     var rootfsIsRW : Boolean = false;
     var systemIsRW : Boolean = false;

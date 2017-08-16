@@ -12,22 +12,12 @@ import android.preference.Preference
 import android.preference.PreferenceFragment
 import android.preference.PreferenceScreen
 import android.preference.SwitchPreference
+import com.meli.pdesire.yandereservice.framework.YanderePackageManager
+import com.meli.pdesire.yandereservice.framework.YandereRootUtility
 
 class AudioSettingsFragment : PreferenceFragment() {
 
-    private fun isAppInstalled(uri: String): Boolean {
-        val context = activity
-        val pm = context.packageManager
-        var installed: Boolean
-        try {
-            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES)
-            installed = true
-        } catch (e: PackageManager.NameNotFoundException) {
-            installed = false
-        }
 
-        return installed
-    }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +26,7 @@ class AudioSettingsFragment : PreferenceFragment() {
         addPreferencesFromResource(R.xml.pref_general)
         setHasOptionsMenu(true)
 
-        val isV4AInstalled = isAppInstalled("com.audlabs.viperfx")
+        val isV4AInstalled = YanderePackageManager.isAppInstalled("com.audlabs.viperfx", activity)
 
         val screen = preferenceScreen
         val v4a = findPreference("v4a") as PreferenceScreen
@@ -51,20 +41,20 @@ class AudioSettingsFragment : PreferenceFragment() {
             val switched = (preference as SwitchPreference)
                     .isChecked
             if (!switched) {
-                RootUtility.mount_rw_rootfs()
-                RootUtility.mount_rw_system()
-                RootUtility.sudo("cp /system/Yuno/stock/srs_processing.cfg /system/etc/srs")
-                RootUtility.mount_ro_rootfs()
-                RootUtility.mount_ro_system()
-                RootUtility.security_harden()
+                YandereRootUtility.mount_rw_rootfs()
+                YandereRootUtility.mount_rw_system()
+                YandereRootUtility.sudo("cp /system/Yuno/stock/srs_processing.cfg /system/etc/srs")
+                YandereRootUtility.mount_ro_rootfs()
+                YandereRootUtility.mount_ro_system()
+                YandereRootUtility.security_harden()
 
             } else {
-                RootUtility.mount_rw_rootfs()
-                RootUtility.mount_rw_system()
-                RootUtility.sudo("cp /system/Yuno/heavybass/srs_processing.cfg /system/etc/srs")
-                RootUtility.mount_ro_rootfs()
-                RootUtility.mount_ro_system()
-                RootUtility.security_harden()
+                YandereRootUtility.mount_rw_rootfs()
+                YandereRootUtility.mount_rw_system()
+                YandereRootUtility.sudo("cp /system/Yuno/heavybass/srs_processing.cfg /system/etc/srs")
+                YandereRootUtility.mount_ro_rootfs()
+                YandereRootUtility.mount_ro_system()
+                YandereRootUtility.security_harden()
             }
             true
         }
@@ -73,7 +63,7 @@ class AudioSettingsFragment : PreferenceFragment() {
         val reboot = findPreference("reboot_click")
 
         reboot.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            RootUtility.sudo("reboot")
+            YandereRootUtility.sudo("reboot")
 
             false
         }

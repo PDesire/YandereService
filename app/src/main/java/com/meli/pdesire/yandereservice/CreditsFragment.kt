@@ -5,11 +5,11 @@ package com.meli.pdesire.yandereservice
  */
 
 import android.annotation.TargetApi
-import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
 import android.preference.Preference
 import android.preference.PreferenceFragment
+import com.meli.pdesire.yandereservice.framework.YandereOutputWrapper
 
 class CreditsFragment : PreferenceFragment() {
 
@@ -20,13 +20,9 @@ class CreditsFragment : PreferenceFragment() {
 
         addPreferencesFromResource(R.xml.pref_other)
         setHasOptionsMenu(true)
-        val reboot = findPreference("credits_click")
-        val builder = AlertDialog.Builder(activity)
-        reboot.onPreferenceClickListener = Preference.OnPreferenceClickListener {
-            builder.setTitle(R.string.credits_title)
-            builder.setMessage(this@CreditsFragment.getString(R.string.credits))
-            builder.create()
-            builder.show()
+        val credits = findPreference("credits_click")
+        credits.onPreferenceClickListener = Preference.OnPreferenceClickListener {
+            YandereOutputWrapper.outputMessageInt(R.string.credits_title, R.string.credits, activity)
             false
         }
     }
