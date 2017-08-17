@@ -31,17 +31,16 @@
     <string name="team_author_description">Team DevElite</string>
     <string name="team_author_title">Development Team</string>
 
-
     <!-- MISC STRINGS -->
-    <string name="sound_enhance_strings_zirenesound_title_txt">AM3D Zirene® Audio (just for 32bit)</string>
-    <string name="sound_enhance_strings_zirenesound_desc_txt">Performs the best of AM3D in one app, enhancements in many ways for Speaker, Headphones and Bluetooth</string>
     <string name="sound_enhance_strings_v4a_title_txt">VIPER4Android®</string>
     <string name="sound_enhance_strings_v4a_desc_txt">Customize your Audio Output however you want</string>
-    <string name="sound_enhance_strings_dolby_title_txt">Dolby Digital Plus</string>
-    <string name="sound_enhance_strings_dolby_desc_txt">The iconic Dolby Sound on your phone</string>
-
     <string name="credits_title">Credits:</string>
     <string name="credits">Special Thanks to Team DevElite for your all around support \n \n Thanks to: \n RXS Moonbreakers \n Team Duality \n Team Harmonics Symphonium \n Team Unity \n Team A.R.I.S.E \n \n and to Yasmin the Melon alias my GF xD</string>
     <string name="credits_pdesireaudio">Special Thanks to: \n \n Team DevElite \n \n Sony OSS \n \n Qualcomm</string>
+    <string name="pdesireaudio_found">PDesireAudio found on Kernel</string>
+    <string name="pdesireaudio_not_found">PDesireAudio not found on Kernel</string>
+    <string name="security_error">App shutdowning because security conditions not given</string>
+    <string name="pdesireaudio_desc">What is PDesireAudio</string>
+    <string name="pdesireaudio_description">PDesireAudio is a kernel modification for high end audio \n \n Ask your kernel developer if he can implement PDesireAudio to his kernel if it doesn't have it yet</string>
 
 </resources>

@@ -11,8 +11,8 @@ import android.preference.Preference
 import android.preference.PreferenceFragment
 import android.preference.SwitchPreference
 import android.widget.Toast
+import com.meli.pdesire.yandereservice.framework.YanderePDesireAudioAPI
 import com.meli.pdesire.yandereservice.framework.YandereRootUtility
-import java.io.File
 
 class PDesireAudioControlFragment : PreferenceFragment() {
 
@@ -24,15 +24,12 @@ class PDesireAudioControlFragment : PreferenceFragment() {
         addPreferencesFromResource(R.xml.pref_pdesireaudio_control)
         setHasOptionsMenu(true)
 
-        val pdesireaudio_wcd9330 = File("/sys/module/snd_soc_wcd9330/uhqa_mode_pdesireaudio")
-        val pdesireaudio_wcd9330_new_api = File("/sys/module/snd_soc_wcd9330/PDesireAudio")
-        val pdesireaudio_wcd9320 = File("/sys/module/snd_soc_wcd9320/uhqa_mode_pdesireaudio")
-        val pdesireaudio_wcd9320_new_api = File("/sys/module/snd_soc_wcd9320/PDesireAudio")
-
-        if (pdesireaudio_wcd9330.exists() || pdesireaudio_wcd9330_new_api.exists() || pdesireaudio_wcd9320.exists() || pdesireaudio_wcd9320_new_api.exists()) {
-            Toast.makeText(getActivity(), "PDesireAudio found on Kernel",
+        if (!YanderePDesireAudioAPI.getPDesireAudio().equals(""))
+            Toast.makeText(activity, getString(R.string.pdesireaudio_found),
                     Toast.LENGTH_LONG).show();
-        }
+        else
+            Toast.makeText(activity, getString(R.string.pdesireaudio_not_found),
+                    Toast.LENGTH_LONG).show();
 
         val pdesireaudio_uhqa = findPreference("pdesireaudio_uhqa_switch")
 
@@ -40,15 +37,9 @@ class PDesireAudioControlFragment : PreferenceFragment() {
             val switched = (preference as SwitchPreference)
                     .isChecked
             if (!switched) {
-                YandereRootUtility.sudo("echo 1 /sys/module/snd_soc_wcd9330/uhqa_mode_pdesireaudio")
-                YandereRootUtility.sudo("echo 1 /sys/module/snd_soc_wcd9330/PDesireAudio")
-                YandereRootUtility.sudo("echo 1 /sys/module/snd_soc_wcd9320/uhqa_mode_pdesireaudio")
-                YandereRootUtility.sudo("echo 1 /sys/module/snd_soc_wcd9320/PDesireAudio")
+                YandereRootUtility.sudo("echo 1 " + YanderePDesireAudioAPI.getPDesireAudio())
             } else {
-                YandereRootUtility.sudo("echo 0 /sys/module/snd_soc_wcd9330/uhqa_mode_pdesireaudio")
-                YandereRootUtility.sudo("echo 0 /sys/module/snd_soc_wcd9330/PDesireAudio")
-                YandereRootUtility.sudo("echo 0 /sys/module/snd_soc_wcd9320/uhqa_mode_pdesireaudio")
-                YandereRootUtility.sudo("echo 0 /sys/module/snd_soc_wcd9320/PDesireAudio")
+                YandereRootUtility.sudo("echo 0 " + YanderePDesireAudioAPI.getPDesireAudio())
             }
 
             true
@@ -61,11 +52,9 @@ class PDesireAudioControlFragment : PreferenceFragment() {
             val switched = (preference as SwitchPreference)
                     .isChecked
             if (!switched) {
-                YandereRootUtility.sudo("echo 1 /sys/module/snd_soc_wcd9330/pdesireaudio_static_mode")
-                YandereRootUtility.sudo("echo 1 /sys/module/snd_soc_wcd9320/pdesireaudio_static_mode")
+                YandereRootUtility.sudo("echo 1 " + YanderePDesireAudioAPI.getPDesireAudioStatic())
             } else {
-                YandereRootUtility.sudo("echo 0 /sys/module/snd_soc_wcd9330/pdesireaudio_static_mode")
-                YandereRootUtility.sudo("echo 0 /sys/module/snd_soc_wcd9320/pdesireaudio_static_mode")
+                YandereRootUtility.sudo("echo 0 " + YanderePDesireAudioAPI.getPDesireAudioStatic())
             }
 
             true
